@@ -73,7 +73,7 @@
                   </ul>
                 </nav>
               </div>
-              <div class="d-print-none"><a class="btn btn-outline-light btn-lg shadow-sm mt-1 me-3" href="material-resume.pdf" data-aos="fade-right" data-aos-delay="700">Download CV</a><a class="btn btn-info btn-lg shadow-sm mt-1" href="#contact" data-aos="fade-left" data-aos-delay="700">Hire Me</a></div>
+              <div class="d-print-none"><a class="btn btn-outline-light btn-lg shadow-sm mt-1 me-3" href="/assets/MatthewWall_CV.pdf" download="MatthewWall_CV.pdf" data-aos="fade-right" data-aos-delay="700">Download CV</a><a class="btn btn-info btn-lg shadow-sm mt-1" href="#contact" data-aos="fade-left" data-aos-delay="700">Hire Me</a></div>
             </div>
           </div>
         </div>
@@ -85,8 +85,8 @@
       <div class="row">
         <div class="col-md-6">
           <h2 class="h2 fw-light mb-4">About Me</h2>
-          <p>Hello! I’m Walter Patterson. I am passionate about UI/UX design and Web Design. I am a skilled <strong>front-end developer</strong> and master of graphic design tools such as Photoshop and Sketch. I am a quick learner and a team worker that gets the job done.</p>
-          <p>I can easily capitalize on low hanging fruits and quickly maximize timely deliverables for real-time schemas.</p>
+          <p>Hello! I’m Matthew Wall. I have 5 years experience in technology environments that focus on software as a service. I am a skilled <strong>full-stack developer</strong> with an emphasis on robust backend that efficiently serves light weight front end. I am a quick learner that does best getting thrown into the weeds with team resources to bounce off of.</p>
+          <p>I am good working on deadlines and managing long running projects. I know how to interact with clients to make the most of meetings and get or deliver the information needed.</p>
         </div>
         <div class="col-md-5 offset-lg-1">
           <div class="row mt-2">
@@ -159,12 +159,12 @@
           </div>
           <div class="mb-3"><span class="fw-bolder">Azure</span>
             <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Expert</div>
+              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">Advanced</div>
             </div>
           </div>
           <div class="mb-3"><span class="fw-bolder">Visual Studio</span>
             <div class="progress my-2 rounded" style="height: 20px">
-              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Expert</div>
+              <div class="progress-bar bg-secondary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">Advanced</div>
             </div>
           </div>
         </div>
@@ -269,7 +269,6 @@
           </div>
         </div>
         <div class="text-small">
-          <div class="mb-1">&copy; Material Resume. All rights reserved.</div>
           <div>Design - <a href="https://templateflip.com/" target="_blank">TemplateFlip</a></div>
         </div>
       </div>
@@ -284,17 +283,28 @@
     data: () => ({
     }),
     mounted() {
-      let recaptchaScript = document.createElement('script')
-      recaptchaScript.setAttribute('src', '../scripts/mdb.min.js')
-      let recaptchaScript2 = document.createElement('script')
-      recaptchaScript2.setAttribute('src', '../scripts//aos.js')
-      let recaptchaScript3 = document.createElement('script')
-      recaptchaScript3.setAttribute('src', '../scripts/main.js')
-      document.head.appendChild(recaptchaScript2)
-      document.head.appendChild(recaptchaScript)
-      document.head.appendChild(recaptchaScript3)
+      let mdbminScript = document.createElement('script')
+      mdbminScript.setAttribute('src', './/scripts/mdb.min.js')
+      let aosScript = document.createElement('script')
+      aosScript.setAttribute('src', './/scripts//aos.js')
+      let mainScript = document.createElement('script')
+      mainScript.setAttribute('src', './/scripts/main.js')
+      document.head.appendChild(mdbminScript)
+      document.head.appendChild(aosScript)
+      document.head.appendChild(mainScript)
     },
     methods: {
+      downloadItem (url) {
+    Axios.get(url, { responseType: 'blob' })
+      .then(response => {
+        const blob = new Blob([response.data], { type: 'application/pdf' })
+        const link = document.createElement('a')
+        link.href = URL.createObjectURL(blob)
+        link.download = "MatthewWall_CV"
+        link.click()
+        URL.revokeObjectURL(link.href)
+      }).catch(console.error)
     }
   }
+}
 </script>

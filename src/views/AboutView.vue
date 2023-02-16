@@ -284,11 +284,11 @@
     }),
     mounted() {
       let mdbminScript = document.createElement('script')
-      mdbminScript.setAttribute('src', './scripts/mdb.min.js')
+      mdbminScript.setAttribute('src', '/scripts/mdb.min.js')
       let aosScript = document.createElement('script')
-      aosScript.setAttribute('src', './scripts/aos.js')
+      aosScript.setAttribute('src', '/scripts/aos.js')
       let mainScript = document.createElement('script')
-      mainScript.setAttribute('src', './scripts/main.js')
+      mainScript.setAttribute('src', '/scripts/main.js')
       document.head.appendChild(aosScript)
       document.head.appendChild(mdbminScript)
       document.head.appendChild(mainScript)
